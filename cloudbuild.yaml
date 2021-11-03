@@ -3,4 +3,4 @@ steps:
     args: ['mvn', 'package']
 
   - name: 'tests'
-    args: [ 'mvn', 'tests' ]
+    args: ['mvn', 'tests']
