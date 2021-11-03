@@ -3,7 +3,6 @@ steps:
     name: maven:3.8.3-openjdk-11
     entrypoint: mvn
     args: ['test']
-
   - id: 'Build'
     name: maven:3.8.3-openjdk-11
     entrypoint: mvn
@@ -15,20 +14,15 @@ steps:
     entrypoint: mvn
     args: ['org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate','-Dexpression=project.version','-q','-DforceStdout>target/VERSION']
   - id: 'checking sub values'
-    name: 'gcr.io/cloud-builders/docker'
+    name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
       - '-c'
       - |
         echo 'hugo version: '${_HUGO_VERSION} # hugo version: 0.55.6
-        echo 'hugo img: '${_HUGO_IMG} # hugo img: gcr.io//hugo:
-        echo 'env hugo img: '$$HUGO_IMG # env hugo img: 'gcr.io/my-project/hugo:0.55.6'
   substitutions:
     _HUGO_VERSION: "0.55.6"
-    _HUGO_IMG: 'gcr.io/$PROJECT_ID/hugo:$_HUGO_VERSION'
   options:
     substitution_option: 'ALLOW_LOOSE'
-    env:
-      - HUGO_IMG='gcr.io/$PROJECT_ID/hugo:$_HUGO_VERSION'
 #  - name: gcr.io/cloud-builders/docker
 #    args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:${_NODE_VERSION_1}', '.']
