@@ -1,6 +1,3 @@
 steps:
-  - name: 'build'
-    args: ['mvn', 'package']
-
-  - name: 'tests'
-    args: ['mvn', 'tests']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:$SHORT_SHA', '.']
