@@ -21,5 +21,6 @@ steps:
     _HUGO_VERSION: "0.55.6"
   options:
     substitution_option: 'ALLOW_LOOSE'
+    dynamic_substitutions: true
 #  - name: gcr.io/cloud-builders/docker
 #    args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:${_NODE_VERSION_1}', '.']
