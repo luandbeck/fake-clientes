@@ -18,7 +18,7 @@ steps:
   - id: 'checking sub values'
     name: 'ubuntu'
     entrypoint: bash
-    args: ['echo', '$SHORT_SHA']
+    args: ['echo', '$_VARIAVEL_LUAN']
   - substitutions:
     _VARIAVEL_LUAN: try6545
   - options:
