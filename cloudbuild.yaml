@@ -21,6 +21,8 @@ steps:
     args: ['echo', '$SHORT_SHA']
   - substitutions:
     _VARIAVEL_LUAN: try6545
+  - options:
+      substitution_option: 'ALLOW_LOOSE'
 
 #  - name: gcr.io/cloud-builders/docker
 #    args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:${_NODE_VERSION_1}', '.']
