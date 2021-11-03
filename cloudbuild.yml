@@ -1,0 +1,6 @@
+steps:
+  - name: 'build'
+    args: ['mvn', 'package']
+
+  - name: 'tests'
+    args: [ 'mvn', 'tests' ]
