@@ -16,12 +16,9 @@ steps:
     entrypoint: mvn
     args: ['org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate','-Dexpression=project.version','-q','-DforceStdout>target/VERSION']
   - id: 'checking sub values'
-    name: ubuntu
+    name: 'ubuntu'
     entrypoint: bash
-    args: 
-      - '-c'
-      -  |
-        echo "Hello World"
+    args: ['echo', 'hello World']
   substitutions:
     _HUGO_VERSION: "0.55.6"
   options:
