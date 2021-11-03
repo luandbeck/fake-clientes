@@ -21,7 +21,7 @@ steps:
     args: ['echo', '$SHORT_SHA']
 
   substitutions:
-    SHORT_SHA: try6545
+  SHORT_SHA: try6545
 
 #  - name: gcr.io/cloud-builders/docker
 #    args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:${_NODE_VERSION_1}', '.']
