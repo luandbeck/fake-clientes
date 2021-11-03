@@ -18,7 +18,10 @@ steps:
   - id: 'checking sub values'
     name: ubuntu
     entrypoint: bash
-    args: ['echo',  '$SHORT_SHA']
+    args: 
+      - '-c'
+      -  |
+        echo "Hello World"
   substitutions:
     _HUGO_VERSION: "0.55.6"
   options:
