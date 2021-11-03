@@ -3,10 +3,12 @@ steps:
     name: maven:3.8.3-openjdk-11
     entrypoint: mvn
     args: ['test']
+
   - id: 'Build'
     name: maven:3.8.3-openjdk-11
     entrypoint: mvn
     args: ['package']
+
   - name: maven:3.8.3-openjdk-11
     entrypoint: mvn
     args: ['org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate','-Dexpression=project.name','-q','-DforceStdout>target/IMAGE']
@@ -16,7 +18,7 @@ steps:
   - id: 'checking sub values'
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
-    args: ['echo',  '${_HUGO_VERSION}']
+    args: ['echo',  '$SHORT_SHA']
   substitutions:
     _HUGO_VERSION: "0.55.6"
   options:
