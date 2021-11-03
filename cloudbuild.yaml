@@ -12,3 +12,7 @@ steps:
   - id: 'Create image'
     name: gcr.io/cloud-builders/docker
     args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:$SHORT_SHA', '.']
+
+  - id: 'Run image'
+    name: gcr.io/cloud-builders/docker
+    args: ['run', '-d', '--name', 'myapp', 'gcr.io/treinamentociandt/fake-cliente:latest']
