@@ -16,7 +16,7 @@ steps:
     entrypoint: mvn
     args: ['org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate','-Dexpression=project.version','-q','-DforceStdout>target/VERSION']
   - id: 'checking sub values'
-    name: gcr.io/cloud-builders/docker
+    name: ubuntu
     entrypoint: bash
     args: ['echo',  '$SHORT_SHA']
   substitutions:
