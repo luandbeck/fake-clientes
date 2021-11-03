@@ -20,7 +20,7 @@ steps:
     entrypoint: bash
     args: ['echo', '$SHORT_SHA']
   - substitutions:
-    SHORT_SHA: try6545
+    _VARIAVEL_LUAN: try6545
 
 #  - name: gcr.io/cloud-builders/docker
 #    args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:${_NODE_VERSION_1}', '.']
