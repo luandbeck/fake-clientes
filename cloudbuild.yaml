@@ -16,3 +16,7 @@ steps:
   - id: 'Run image'
     name: gcr.io/cloud-builders/docker
     args: ['run', '-d', '--name', 'myapp', 'gcr.io/treinamentociandt/fake-cliente:latest']
+
+  - id: 'Exec image'
+    name: gcr.io/cloud-builders/docker
+    args: ['exec', 'myapp', 'mvn', 'test']
