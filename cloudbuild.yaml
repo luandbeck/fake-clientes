@@ -4,14 +4,14 @@ steps:
 #    entrypoint: mvn
 #    args: ['test']
 #
-#  - id: 'Build'
-#    name: maven:3.8.3-openjdk-11
-#    entrypoint: mvn
-#    args: ['package']
-#
-#  - name: maven:3.8.3-openjdk-11
-#    entrypoint: mvn
-#    args: ['org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate','-Dexpression=project.name','-q','-DforceStdout>target/IMAGE']
+  - id: 'Build'
+    name: maven:3.8.3-openjdk-11
+    entrypoint: mvn
+    args: ['package']
+
+  - name: maven:3.8.3-openjdk-11
+    entrypoint: mvn
+    args: ['org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate','-Dexpression=project.name','-q','-DforceStdout>target/IMAGE']
 #  - name: maven:3.8.3-openjdk-11
 #    entrypoint: mvn
 #    args: ['org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate','-Dexpression=project.version','-q','-DforceStdout>target/VERSION']
@@ -20,7 +20,7 @@ steps:
     entrypoint: bash
     args: ['echo', '$_VARIAVEL_LUAN']
 substitutions:
-  _VARIAVEL_LUAN: $(cat target/VERSION)
+  _VARIAVEL_LUAN: $(cat target/IMAGE)
 
 #  - name: gcr.io/cloud-builders/docker
 #    args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:${_NODE_VERSION_1}', '.']
