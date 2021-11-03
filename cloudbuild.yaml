@@ -16,10 +16,7 @@ steps:
   - id: 'checking sub values'
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
-    args:
-      - '-c'
-      - |
-        echo 'hugo version: '${_HUGO_VERSION} # hugo version: 0.55.6
+    args: ['echo',  '${_HUGO_VERSION}']
   substitutions:
     _HUGO_VERSION: "0.55.6"
   options:
