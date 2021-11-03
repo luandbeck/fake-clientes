@@ -20,7 +20,7 @@ steps:
     entrypoint: bash
     args: ['echo', '$_VARIAVEL_LUAN']
   - substitutions:
-    _VARIAVEL_LUAN: try6545
+      _VARIAVEL_LUAN: try6545
   - options:
       substitution_option: 'ALLOW_LOOSE'
 
