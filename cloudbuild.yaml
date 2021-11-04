@@ -9,14 +9,18 @@ steps:
     entrypoint: mvn
     args: ['package']
 
-  - id: 'Create image'
+  - id: 'Criar image'
     name: gcr.io/cloud-builders/docker
     args: ['build', '-t', 'gcr.io/treinamentociandt/fake-cliente:latest', '-t', 'gcr.io/treinamentociandt/fake-cliente:$SHORT_SHA', '.']
 
-  - id: 'Run image'
+  - id: 'Publicar imagem LATEST'
     name: gcr.io/cloud-builders/docker
-    args: ['run', '-d', '--name', 'myapp', 'gcr.io/treinamentociandt/fake-cliente:latest']
+    args: ['push', 'gcr.io/treinamentociandt/fake-cliente:latest']
 
-  - id: 'Exec image'
+  - id: 'Publicar imagem ESPECIFICA'
     name: gcr.io/cloud-builders/docker
-    args: ['exec', 'myapp', 'mvn', 'test']
+    args: ['push', 'gcr.io/treinamentociandt/fake-cliente:$SHORT_SHA']
+
+  - id: 'Deploy'
+    name: gcr.io/cloud-builders/gcloud
+    args: ['run', 'deploy', 'myapp-cloudrun', '--image', 'gcr.io/treinamentociandt/fake-cliente:latest', '--regions', 'us-central', 'platform', 'managed', '--allow-unauthenticated']
