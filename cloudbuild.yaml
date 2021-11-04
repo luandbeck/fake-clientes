@@ -23,4 +23,4 @@ steps:
 
   - id: 'Deploy'
     name: gcr.io/cloud-builders/gcloud
-    args: ['run', 'deploy', 'myapp-cloudrun', '--image', 'gcr.io/treinamentociandt/fake-cliente:latest', '--region', 'us-central', 'platform', 'managed', '--allow-unauthenticated']
+    args: ['run', 'deploy', 'myapp-cloudrun', '--image', 'gcr.io/treinamentociandt/fake-cliente:latest', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
