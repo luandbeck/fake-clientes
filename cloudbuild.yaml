@@ -20,3 +20,7 @@ steps:
   - id: 'Publicar imagem ESPECIFICA'
     name: gcr.io/cloud-builders/docker
     args: [ 'push','gcr.io/treinamentocit2/fake-clientes:$SHORT_SHA' ]
+
+  - id: 'Deploy'
+    name: gcr.io/cloud-builders/gcloud
+    args: [ 'run','deploy','aplicacao-fake-clientes','--image','gcr.io/treinamentocit2/fake-clientes:latest','--region','us-central1','--platform','managed','--allow-unauthenticated',]
