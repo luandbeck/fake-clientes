@@ -8,3 +8,15 @@ steps:
     name: maven:3.8.3-openjdk-11
     entrypoint: mvn
     args: ['test']
+
+  - id: 'Criar imagem'
+    name: gcr.io/cloud-builders/docker
+    args: ['build','-t','gcr.io/treinamentocit2/fake-clientes:latest','-t','gcr.io/treinamentocit2/fake-clientes:$SHORT_SHA','.']
+
+  - id: 'Publicar imagem LATEST'
+    name: gcr.io/cloud-builders/docker
+    args: [ 'push','gcr.io/treinamentocit2/fake-clientes:latest']
+
+  - id: 'Publicar imagem ESPECIFICA'
+    name: gcr.io/cloud-builders/docker
+    args: [ 'push','gcr.io/treinamentocit2/fake-clientes:$SHORT_SHA' ]
