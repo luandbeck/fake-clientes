@@ -1,0 +1,26 @@
+steps:
+  - id: 'Geração de pacote'
+    name: maven:3.8.3-openjdk-11
+    entrypoint: mvn
+    args: ['package', '-DskipTests']
+
+  - id: 'Execução de testes'
+    name: maven:3.8.3-openjdk-11
+    entrypoint: mvn
+    args: ['test']
+
+  - id: 'Criar imagem'
+    name: gcr.io/cloud-builders/docker
+    args: ['build','-t','gcr.io/treinamentocit2/fake-clientes:latest','-t','gcr.io/treinamentocit2/fake-clientes:$SHORT_SHA','.']
+
+  - id: 'Publicar imagem LATEST'
+    name: gcr.io/cloud-builders/docker
+    args: [ 'push','gcr.io/treinamentocit2/fake-clientes:latest']
+
+  - id: 'Publicar imagem ESPECIFICA'
+    name: gcr.io/cloud-builders/docker
+    args: [ 'push','gcr.io/treinamentocit2/fake-clientes:$SHORT_SHA' ]
+
+  - id: 'Deploy'
+    name: gcr.io/cloud-builders/gcloud
+    args: [ 'run','deploy','aplicacao-fake-clientes','--image','gcr.io/treinamentocit2/fake-clientes:latest','--region','us-central1','--platform','managed','--allow-unauthenticated',]
