@@ -9,7 +9,7 @@ public class ConsultaClienteUseCase {
     public ConsultaClienteResponseDTO execute(final long id) {
 
         return ConsultaClienteResponseDTO.builder()
-                .id(id)
+                .id(12)
                 .nome("Fake Cliente")
                 .build();
     }
