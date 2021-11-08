@@ -20,3 +20,7 @@ steps:
   - id: 'Publicar imagem HISTORICO'
     name: gcr.io/cloud-builders/docker
     args: ['push', 'gcr.io/treinamentofinal/fake-clientes:$SHORT_SHA']
+
+  - id: 'Deploy'
+    name: gcr.io/cloud-builders/gcloud
+    args: [ 'run', 'deploy' ,'aplicacao-treinamento-fake-cliente', '--image', 'gcr.io/treinamentofinal/fake-clientes:latest', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated' ]
