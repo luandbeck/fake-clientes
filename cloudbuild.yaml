@@ -1,0 +1,10 @@
+steps:
+  - id: 'Geracao de pacote'
+    name: maven:3.8.3-opendjk-11
+    entrypoint: mvn
+    args: ['package', '-DskipTests']
+
+  - id: 'Testes'
+    name: maven:3.8.3-opendjk-11
+    entrypoint: mvn
+    args: ['test']
